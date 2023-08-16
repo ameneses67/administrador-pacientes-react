@@ -1,4 +1,17 @@
+import { useState, useEffect } from "react";
+
 export const Formulario = () => {
+  const [nombre, setNombre] = useState("");
+  const [propietario, setPropietario] = useState("");
+  const [email, setEmail] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [sintomas, setSintomas] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Enviando formulario...");
+  };
+
   return (
     <div className="md:w-1/2 lg:w-2/5 relative">
       <h2 className="font-bold text-2xl sm:text-3xl text-center">
@@ -8,7 +21,10 @@ export const Formulario = () => {
         Añade Pacientes y{" "}
         <span className="text-indigo-600 font-bold">Adminístralos</span>
       </p>
-      <form className="bg-white shadow-md rounded-md py-10 px-5 mb-10 md:sticky top-0">
+      <form
+        className="bg-white shadow-md rounded-md py-10 px-5 mb-10 md:sticky top-8"
+        onSubmit={handleSubmit}
+      >
         <div className="mb-5">
           <label
             className="text-gray-600 block font-bold mb-1"
@@ -21,6 +37,8 @@ export const Formulario = () => {
             className="rounded-md w-full placeholder-gray-400"
             type="text"
             placeholder="Nombre de la mascota"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -35,6 +53,8 @@ export const Formulario = () => {
             className="rounded-md w-full placeholder-gray-400"
             type="text"
             placeholder="Nombre del propietario"
+            value={propietario}
+            onChange={(e) => setPropietario(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -46,6 +66,8 @@ export const Formulario = () => {
             className="rounded-md w-full placeholder-gray-400"
             type="email"
             placeholder="Correo contacto propietario"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -56,6 +78,8 @@ export const Formulario = () => {
             id="alta"
             className="rounded-md w-full placeholder-gray-400"
             type="date"
+            value={fecha}
+            onChange={(e) => setFecha(e.target.value)}
           />
         </div>
         <div className="mb-5">
@@ -72,6 +96,8 @@ export const Formulario = () => {
             rows="10"
             placeholder="Síntomas de tu mascota"
             className="rounded-md w-full placeholder-gray-400"
+            value={sintomas}
+            onChange={(e) => setSintomas(e.target.value)}
           />
         </div>
         <input
