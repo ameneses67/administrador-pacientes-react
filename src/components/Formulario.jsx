@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import Error from "./Error";
 
-export const Formulario = () => {
+export const Formulario = ({ pacientes, setPacientes }) => {
   const [nombre, setNombre] = useState("");
   const [propietario, setPropietario] = useState("");
   const [email, setEmail] = useState("");
@@ -20,6 +21,24 @@ export const Formulario = () => {
     }
 
     setError(false);
+
+    // Construir objeto paciente
+    const objetoPaciente = {
+      nombre,
+      propietario,
+      email,
+      fecha,
+      sintomas,
+    };
+
+    setPacientes([...pacientes, objetoPaciente]);
+
+    //Reiniciar el formulario
+    setNombre("");
+    setPropietario("");
+    setEmail("");
+    setFecha("");
+    setSintomas("");
   };
 
   return (
@@ -36,9 +55,9 @@ export const Formulario = () => {
         onSubmit={handleSubmit}
       >
         {error && (
-          <div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md text-sm">
+          <Error>
             <p>Todos los campos son obligatorios</p>
-          </div>
+          </Error>
         )}
         <div className="mb-5">
           <label
@@ -49,7 +68,7 @@ export const Formulario = () => {
           </label>
           <input
             id="mascota"
-            className="rounded-md w-full placeholder-gray-400"
+            className="rounded-md w-full placeholder-gray-400 "
             type="text"
             placeholder="Nombre de la mascota"
             value={nombre}
