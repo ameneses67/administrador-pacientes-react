@@ -1,6 +1,6 @@
 export const Formulario = () => {
   return (
-    <div className="md:w-1/2 lg:w-2/5">
+    <div className="md:w-1/2 lg:w-2/5 relative">
       <h2 className="font-bold text-2xl sm:text-3xl text-center">
         Seguimiento Pacientes
       </h2>
@@ -8,7 +8,7 @@ export const Formulario = () => {
         Añade Pacientes y{" "}
         <span className="text-indigo-600 font-bold">Adminístralos</span>
       </p>
-      <form className="bg-white shadow-md rounded-md py-10 px-5 mb-10">
+      <form className="bg-white shadow-md rounded-md py-10 px-5 mb-10 md:sticky top-0">
         <div className="mb-5">
           <label
             className="text-gray-600 block font-bold mb-1"
