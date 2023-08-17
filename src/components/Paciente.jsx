@@ -1,4 +1,6 @@
-const Paciente = ({ paciente }) => {
+import PropTypes from "prop-types";
+
+const Paciente = ({ paciente, setPaciente }) => {
   const { nombre, propietario, email, fecha, sintomas } = paciente;
 
   return (
@@ -18,8 +20,28 @@ const Paciente = ({ paciente }) => {
       <p className="font-bold mb-3 text-gray-700">
         Sintomas: <span className="font-normal">{sintomas}</span>
       </p>
+      <div className="flex gap-8 mt-10">
+        <button
+          className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 hover:shadow-md text-white font-bold uppercase rounded-md transition"
+          type="button"
+          onClick={() => setPaciente(paciente)}
+        >
+          Editar
+        </button>
+        <button
+          className="py-2 px-10 bg-red-600 hover:bg-red-700 hover:shadow-md text-white font-bold uppercase rounded-md transition"
+          type="button"
+        >
+          Eliminar
+        </button>
+      </div>
     </div>
   );
+};
+
+Paciente.propTypes = {
+  paciente: PropTypes.object.isRequired,
+  setPaciente: PropTypes.func.isRequired,
 };
 
 export default Paciente;
