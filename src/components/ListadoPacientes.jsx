@@ -1,7 +1,11 @@
 import Paciente from "./Paciente";
 import PropTypes from "prop-types";
 
-export const ListadoPacientes = ({ pacientes, setPaciente }) => {
+export const ListadoPacientes = ({
+  pacientes,
+  setPaciente,
+  eliminarPaciente,
+}) => {
   return (
     <div className="md:w-1/2 lg:w-3/5 mb-10">
       {pacientes && pacientes.length ? (
@@ -19,6 +23,7 @@ export const ListadoPacientes = ({ pacientes, setPaciente }) => {
               key={paciente.id}
               paciente={paciente}
               setPaciente={setPaciente}
+              eliminarPaciente={eliminarPaciente}
             />
           ))}
         </>
@@ -42,4 +47,5 @@ export const ListadoPacientes = ({ pacientes, setPaciente }) => {
 ListadoPacientes.propTypes = {
   pacientes: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
   setPaciente: PropTypes.func.isRequired,
+  eliminarPaciente: PropTypes.func.isRequired,
 };
